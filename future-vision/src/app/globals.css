@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+:root {
+  --background: #03010f;
+  --foreground: #f8f9ff;
+}
+
+@theme inline {
+  --color-primary-dark: #03010f;
+  --color-primary: #111133;
+  --color-primary-soft: #1a1a3f;
+  --color-neon-blue: #36d0ff;
+  --color-neon-purple: #a971ff;
+  --color-neon-pink: #ff3cf6;
+  --color-neon-amber: #ffb347;
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --drop-shadow-neon: 0 0 1rem #36d0ff55, 0 0 3rem #ff3cf622;
+  --drop-shadow-fuchsia: 0 0 1.5rem #ff3cf666;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(circle at top, #19195a11, transparent 40%),
+    radial-gradient(circle at 10% 20%, #33115555, transparent 55%),
+    radial-gradient(circle at 90% 10%, #ff00ff11, transparent 50%), #03010f;
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  min-height: 100vh;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: -20% -10%;
+  background: radial-gradient(30% 30% at 20% 20%, #44117755, transparent),
+    radial-gradient(35% 35% at 70% 15%, #2244ff33, transparent),
+    radial-gradient(20% 20% at 80% 80%, #ff3cf630, transparent),
+    radial-gradient(20% 20% at 10% 80%, #36d0ff26, transparent);
+  z-index: -2;
+  filter: blur(40px);
+}
+
+.neon-border {
+  border-image: linear-gradient(
+      120deg,
+      rgba(54, 208, 255, 0.9),
+      rgba(169, 113, 255, 0.9),
+      rgba(255, 60, 246, 0.95)
+    )
+    1;
+}
+
+.glass-panel {
+  background: rgba(8, 8, 26, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1.5rem;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65);
+}
+
+.glow-text {
+  text-shadow: 0 0 14px rgba(54, 208, 255, 0.35),
+    0 0 32px rgba(169, 113, 255, 0.3);
+}
+
+.gradient-button {
+  background: linear-gradient(135deg, #36d0ff, #a971ff, #ff3cf6);
+  color: #040113;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gradient-button:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 20px 40px rgba(169, 113, 255, 0.3),
+    0 10px 30px rgba(54, 208, 255, 0.3);
+}
+
+.neon-ring {
+  position: relative;
+}
+
+.neon-ring::after {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  border-radius: inherit;
+  border: 1px solid rgba(54, 208, 255, 0.25);
+  box-shadow: 0 0 40px rgba(54, 208, 255, 0.35),
+    0 0 80px rgba(255, 60, 246, 0.2);
+  filter: blur(6px);
+  z-index: -1;
+}
+
+.grid-overlay {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.04) 1px,
+      transparent 1px
+    );
+  background-size: 50px 50px;
+  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.9), transparent);
+  pointer-events: none;
+}
